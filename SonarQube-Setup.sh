@@ -9,15 +9,18 @@ exec bash
 hostname 
 
 sudo yum update -y
+
 sudo yum install vim wget curl unzip fontconfig java-17-openjdk-devel -y
 
 sudo setenforce 0
+
 sudo sed -i 's/^SELINUX-enforcing$/SELINUX=permissive/' /etc/selinux/config
 
 sudo tee -a /etc/sysctl.conf<<EOF
 vm.max_map_count=262144
 fs.file-max=65536
 EOF
+
 sudo sysctl --system
 
 
@@ -38,30 +41,39 @@ sudo systemctl enable --now postgresql-16
 
 sudo vim /var/lib/pgsql/16/data/pg_hba.conf    // need not change anything in this file
 
-vim /var/lib/pgsql/16/data/postgresql.conf    // uncoment line number 60 and replace as  listen_addresses = '*'
+vim /var/lib/pgsql/16/data/postgresql.conf          // uncoment line number 60 and replace as  listen_addresses = '*'
+
 systemctl restart postgresql-16
+
 su - postgres
+
 psql
 
 alter user postgres with password 'CloudGen@123';
+
 \q
+
 createdb sonarqube
+
 psql
+
 CREATE USER sonarqube WITH PASSWORD 'CloudGen@123';
+
 GRANT ALL PRIVILEGES ON DATABASE sonarqube to sonarqube;
 \q
 
 exit
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.5.90363.zip
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
 
-unzip sonarqube-9.4.0.54424.zip
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.5.90363.zip
+
+unzip sonarqube-9.9.5.90363.zip
 
 mv sonarqube-*/ /opt/sonarqube
 
+cd /opt
 
 
-sudo vim /opt/sonarqube/conf/sonar.properties      //copy the below lines from 66 to 83 and paste at 407th line
+sudo vim /opt/sonarqube/conf/sonar.properties      //copy the below lines from 78 to 95 and paste at 407th line
 
 ## Database details
 sonar.jdbc.username=sonarqube
@@ -84,7 +96,9 @@ sonar.path.temp=/var/sonarqube/temp
 
 
 chown -R sonar:sonar /opt/sonarqube
+
 mkdir -p /var/sonarqube
+
 chown -R sonar:sonar /var/sonarqube
 
 
