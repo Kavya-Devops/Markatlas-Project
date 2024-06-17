@@ -18,6 +18,7 @@ sudo chown -R nexus:nexus /opt/sonatype-work/
 sudo vim /opt/nexus/bin/nexus.rc   // need to remove # and put nexus in that
 sudo vim /opt/nexus/bin/nexus.vmoptions  //no need to change
 sudo ln -s /opt/nexus/bin/nexus /etc/rc.d/init.d/nexus
+yum install chkconfig -y
 sudo chkconfig --add nexus
 sudo chkconfig --levels 35 nexus on
 sudo service nexus start
@@ -31,10 +32,8 @@ systemctl stop firewalld  // don't' apply this command if you have applied above
 #login Configurations:
 
 
-username:  admin
-
-for password set/reset 
-
+username:  adminfor password set/reset 
+============================================
 cat /opt/sonatype-work/nexus3/admin.password
 
 user: admin
