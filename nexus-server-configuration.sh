@@ -6,7 +6,7 @@ sudo  yum install tar make unzip wget vim -y
 cd /opt/
 
 #for java11:
-yum fontconfig install java-17-openjdk-devel -y
+yum install fontconfig java-11-openjdk-devel -y
 java -version
 wget https://download.sonatype.com/nexus/3/nexus-3.69.0-02-java11-unix.tar.gz
 tar -xvf nexus-3.69.0-02-java11-unix.tar.gz
