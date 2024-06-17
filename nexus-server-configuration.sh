@@ -15,7 +15,7 @@ mv nexus-3.69.0-02 nexus
 sudo useradd nexus
 sudo chown -R nexus:nexus /opt/nexus
 sudo chown -R nexus:nexus /opt/sonatype-work/
-sudo vim /opt/nexus/bin/nexus.rc
+sudo vim /opt/nexus/bin/nexus.rc   // need to remove # and put nexus in that
 sudo vim /opt/nexus/bin/nexus.vmoptions  //no need to change
 sudo ln -s /opt/nexus/bin/nexus /etc/rc.d/init.d/nexus
 sudo chkconfig --add nexus
