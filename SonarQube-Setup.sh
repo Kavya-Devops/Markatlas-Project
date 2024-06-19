@@ -148,5 +148,5 @@ http://server-ip:9000
 for new password set 
 
 username : admin
-New Password : CloudGen@123
+New Password : Devansh@123
 
