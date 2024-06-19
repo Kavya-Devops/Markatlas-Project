@@ -37,7 +37,7 @@ username:  adminfor password set/reset
 cat /opt/sonatype-work/nexus3/admin.password
 
 user: admin
-Password: CloudGen@123
+Password: Devansh@123
 
 #for java1.8
 sudo yum install -y java-1.8.0-openjdk.x86_64
